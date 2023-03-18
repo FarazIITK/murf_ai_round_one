@@ -46,23 +46,6 @@ const Comment = (props: IProp) => {
       []
     );
     return result;
-
-    // arr.reduce((acc, obj) =>
-    //   obj.id === targetId
-    //     ? acc
-    //     : [
-    //         ...acc,
-    //         {
-    //           ...obj,
-    //           ...(obj.childrens && {
-    //             childrens: removeById(
-    //               obj.childrens,
-    //               targetId
-    //             )
-    //           })
-    //         }
-    //       ];
-    // , []);
   };
 
   const deleteButtonHandler = () => {
