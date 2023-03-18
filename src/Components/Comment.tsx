@@ -20,13 +20,54 @@ const Comment = (props: IProp) => {
     setIsDisplayReplyComponentVisible(true);
   };
 
-  // Deep search here
+  const removeById = (
+    prevComments: IComment[],
+    targetId: string
+  ) => {
+    const arr: IComment[] = [...prevComments];
+
+    const result: IComment[] = arr.reduce<IComment[]>(
+      (acc, obj) => {
+        return obj.id === targetId
+          ? acc
+          : [
+              ...acc,
+              {
+                ...obj,
+                ...(obj.childrens && {
+                  childrens: removeById(
+                    obj.childrens,
+                    targetId
+                  )
+                })
+              }
+            ];
+      },
+      []
+    );
+    return result;
+
+    // arr.reduce((acc, obj) =>
+    //   obj.id === targetId
+    //     ? acc
+    //     : [
+    //         ...acc,
+    //         {
+    //           ...obj,
+    //           ...(obj.childrens && {
+    //             childrens: removeById(
+    //               obj.childrens,
+    //               targetId
+    //             )
+    //           })
+    //         }
+    //       ];
+    // , []);
+  };
 
   const deleteButtonHandler = () => {
     props.setComments((prevComments) => {
-      return prevComments.filter(
-        (currComment) => currComment.id !== comment.id
-      );
+      return removeById(prevComments, comment.id);
     });
   };
 
