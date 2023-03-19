@@ -20,7 +20,7 @@ const Reply = (props: IProp) => {
     setReplyText(e.target.value);
   };
 
-  const findById = (
+  const appendChildToComment = (
     prevComments: IComment[],
     targetId: string,
     newReply: IComment
@@ -42,7 +42,7 @@ const Reply = (props: IProp) => {
               {
                 ...obj,
                 ...(obj.childrens && {
-                  childrens: findById(
+                  childrens: appendChildToComment(
                     obj.childrens,
                     targetId,
                     newReply
@@ -69,7 +69,7 @@ const Reply = (props: IProp) => {
       };
 
       // Deep search here
-      const target: IComment[] = findById(
+      const target: IComment[] = appendChildToComment(
         prevComments,
         props.comment.id,
         newReply
