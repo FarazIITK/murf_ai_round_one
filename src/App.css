@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  padding: 15px 0px;
+  background-color: rgb(70, 72, 77);
+  width: 100%;
+}
+
+.header h1 {
+  font-size: 32px;
+  text-align: center;
+  color: rgb(198, 219, 146);
+}

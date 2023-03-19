@@ -14,23 +14,25 @@ function App() {
   const [comments, setComments] = useState<IComment[]>([]);
 
   return (
-    <div>
+    <div className="app">
       <Header />
-      {comments.map((comment) => {
-        return (
-          <Comment
-            key={comment.id}
-            comment={comment}
-            setComments={setComments}
-          />
-        );
-      })}
-      <br />
-      <br />
-      <AddComment
-        comments={comments}
-        setComments={setComments}
-      />
+      <div className="main-content">
+        {comments.map((comment) => {
+          return (
+            <Comment
+              key={comment.id}
+              comment={comment}
+              setComments={setComments}
+            />
+          );
+        })}
+        <br />
+        <br />
+        <AddComment
+          comments={comments}
+          setComments={setComments}
+        />
+      </div>
     </div>
   );
 }
