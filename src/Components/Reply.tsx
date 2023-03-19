@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-
 import { IComment } from '../App';
 
 interface IProp {
@@ -21,6 +20,42 @@ const Reply = (props: IProp) => {
     setReplyText(e.target.value);
   };
 
+  const findById = (
+    prevComments: IComment[],
+    targetId: string,
+    newReply: IComment
+  ) => {
+    const arr: IComment[] = [...prevComments];
+
+    const result: IComment[] = arr.reduce<IComment[]>(
+      (acc, obj) => {
+        return obj.id === targetId
+          ? [
+              ...acc,
+              {
+                ...obj,
+                childrens: [...obj.childrens, newReply]
+              }
+            ]
+          : [
+              ...acc,
+              {
+                ...obj,
+                ...(obj.childrens && {
+                  childrens: findById(
+                    obj.childrens,
+                    targetId,
+                    newReply
+                  )
+                })
+              }
+            ];
+      },
+      []
+    );
+    return result;
+  };
+
   const handleCommentSubmit = () => {
     //
     setReplyText('');
@@ -34,23 +69,13 @@ const Reply = (props: IProp) => {
       };
 
       // Deep search here
-      const targetComment = prevComments.find(
-        (currComment) => currComment.id === props.comment.id
+      const target: IComment[] = findById(
+        prevComments,
+        props.comment.id,
+        newReply
       );
 
-      if (targetComment) {
-        const updatedTargetComment = {
-          ...targetComment,
-          childrens: [...targetComment.childrens, newReply]
-        };
-        return prevComments.map((currComment) => {
-          return currComment.id === updatedTargetComment.id
-            ? updatedTargetComment
-            : currComment;
-        });
-      }
-
-      return [...prevComments];
+      return target;
     });
   };
 
