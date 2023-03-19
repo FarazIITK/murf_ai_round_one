@@ -5,11 +5,14 @@ import { IComment } from '../App';
 
 interface IProp {
   comments: IComment[];
-  setComments: React.Dispatch<React.SetStateAction<IComment[]>>;
+  setComments: React.Dispatch<
+    React.SetStateAction<IComment[]>
+  >;
 }
 
 const AddComment = (props: IProp) => {
-  const [commentText, setCommentText] = useState<string>('');
+  const [commentText, setCommentText] =
+    useState<string>('');
 
   const handleCommentSubmit = () => {
     setCommentText('');
@@ -28,13 +31,23 @@ const AddComment = (props: IProp) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={commentText}
-        onChange={(e) => handleInputChange(e)}
-      />
-      <button onClick={handleCommentSubmit}>Add</button>
+    <div className="add-comment">
+      <div className="comment-input">
+        <div className="user-icon" />
+        <input
+          type="text"
+          value={commentText}
+          onChange={(e) => handleInputChange(e)}
+          className="comment-input-bar"
+        />
+      </div>
+
+      <button
+        onClick={handleCommentSubmit}
+        className="add-button"
+      >
+        Add new comment
+      </button>
     </div>
   );
 };
