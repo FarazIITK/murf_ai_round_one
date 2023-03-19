@@ -17,6 +17,10 @@ function App() {
     <div className="app">
       <Header />
       <div className="main-content">
+        <AddComment
+          comments={comments}
+          setComments={setComments}
+        />
         {comments.map((comment) => {
           return (
             <Comment
@@ -26,12 +30,6 @@ function App() {
             />
           );
         })}
-        <br />
-        <br />
-        <AddComment
-          comments={comments}
-          setComments={setComments}
-        />
       </div>
     </div>
   );
