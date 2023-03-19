@@ -1,7 +1,8 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AddComment from './Components/AddComment';
 import Comment from './Components/Comment';
+import Header from './Components/Header';
 
 export interface IComment {
   id: string;
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div>
+      <Header />
       {comments.map((comment) => {
         return (
           <Comment
@@ -25,7 +27,10 @@ function App() {
       })}
       <br />
       <br />
-      <AddComment comments={comments} setComments={setComments} />
+      <AddComment
+        comments={comments}
+        setComments={setComments}
+      />
     </div>
   );
 }
