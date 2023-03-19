@@ -1,17 +1,65 @@
 .app {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .header {
-  padding: 15px 0px;
+  padding: 15px 0px 15px 30px;
   background-color: rgb(70, 72, 77);
   width: 100%;
+  text-align: center;
 }
 
 .header h1 {
   font-size: 32px;
-  text-align: center;
   color: rgb(198, 219, 146);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 5% 15px 5%;
+}
+
+.add-comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.user-icon {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(158, 163, 152);
+  border-radius: 50%;
+}
+
+.comment-input-bar {
+  margin: 0 15px;
+  padding: 5px 10px;
+  color: brown;
+  font-size: 14px;
+  border: 2px solid rgb(97, 94, 94);
+  border-radius: 2px;
+  width: 100%;
+}
+
+.add-button {
+  padding: 5px 20px;
+  background-color: rgb(183, 200, 103);
+  color: rgb(48, 48, 46);
+  font-size: 16px;
+  min-height: 50%;
+  border-radius: 6px;
+  border: none;
+  white-space: nowrap;
 }
