@@ -92,13 +92,13 @@ const Comment = (props: IProp) => {
 
       {comment.childrens.map((currChild) => {
         return (
-          <h3 style={{ paddingLeft: '70px' }}>
+          <div style={{ paddingLeft: '70px' }}>
             <Comment
               key={currChild.id}
               comment={currChild}
               setComments={props.setComments}
             />
-          </h3>
+          </div>
         );
       })}
     </div>
