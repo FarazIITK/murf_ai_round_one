@@ -66,10 +66,15 @@
 
 .comment {
   display: flex;
+  flex-direction: column;
+}
+
+.comment-parent {
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .comment-content {
@@ -90,13 +95,13 @@
   margin: 0;
 }
 
-.comment-buttons {
+.paired-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.comment-buttons button {
+.paired-buttons button {
   padding: 5px 15px;
   background-color: rgb(184, 201, 110);
   color: rgb(48, 48, 46);
@@ -107,6 +112,30 @@
   white-space: nowrap;
 }
 
-.comment-buttons button:first-of-type {
+.paired-buttons button:first-of-type {
   margin-right: 20px;
+}
+
+.comment-reply {
+  margin-left: 70px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reply-input {
+  width: 100%;
+  /* margin-right: 10px; */
+}
+
+.reply-input-bar {
+  margin-right: 15px;
+  padding: 5px 10px;
+  color: brown;
+  font-size: 14px;
+  border: 1px solid rgb(97, 94, 94);
+  border-radius: 3px;
+  width: 95%;
 }
