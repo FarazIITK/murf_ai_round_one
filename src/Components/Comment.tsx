@@ -56,38 +56,43 @@ const Comment = (props: IProp) => {
 
   return (
     <div className="comment">
-      <div className="comment-icon">
-        <div className="user-icon" />
-      </div>
-      <div className="comment-content">
-        <div className="comment-text">
-          <h1>{comment.commentText}</h1>
+      <div className="comment-parent">
+        <div className="comment-icon">
+          <div className="user-icon" />
         </div>
-        <div className="comment-buttons">
-          <button onClick={replyButtonHandler}>
-            Reply
-          </button>
-          <button onClick={deleteButtonHandler}>
-            Delete
-          </button>
+        <div className="comment-content">
+          <div className="comment-text">
+            <h1>{comment.commentText}</h1>
+          </div>
+          <div className="paired-buttons">
+            <button onClick={replyButtonHandler}>
+              Reply
+            </button>
+            <button onClick={deleteButtonHandler}>
+              Delete
+            </button>
+          </div>
         </div>
       </div>
 
-      {isDisplayReplyComponentVisible && (
-        <Reply
-          comment={comment}
-          setComments={props.setComments}
-          isDisplayReplyComponentVisible={
-            isDisplayReplyComponentVisible
-          }
-          setIsDisplayReplyComponentVisible={
-            setIsDisplayReplyComponentVisible
-          }
-        />
-      )}
+      <div className="comment-reply">
+        {isDisplayReplyComponentVisible && (
+          <Reply
+            comment={comment}
+            setComments={props.setComments}
+            isDisplayReplyComponentVisible={
+              isDisplayReplyComponentVisible
+            }
+            setIsDisplayReplyComponentVisible={
+              setIsDisplayReplyComponentVisible
+            }
+          />
+        )}
+      </div>
+
       {comment.childrens.map((currChild) => {
         return (
-          <h3 style={{ padding: '30px' }}>
+          <h3 style={{ paddingLeft: '70px' }}>
             <Comment
               key={currChild.id}
               comment={currChild}
