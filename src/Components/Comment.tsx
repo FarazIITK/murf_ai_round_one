@@ -55,10 +55,24 @@ const Comment = (props: IProp) => {
   };
 
   return (
-    <div style={{ padding: '10px' }}>
-      <h1>Comment: {comment.commentText}</h1>
-      <button onClick={replyButtonHandler}>Reply</button>
-      <button onClick={deleteButtonHandler}>Delete</button>
+    <div className="comment">
+      <div className="comment-icon">
+        <div className="user-icon" />
+      </div>
+      <div className="comment-content">
+        <div className="comment-text">
+          <h1>{comment.commentText}</h1>
+        </div>
+        <div className="comment-buttons">
+          <button onClick={replyButtonHandler}>
+            Reply
+          </button>
+          <button onClick={deleteButtonHandler}>
+            Delete
+          </button>
+        </div>
+      </div>
+
       {isDisplayReplyComponentVisible && (
         <Reply
           comment={comment}
@@ -79,7 +93,6 @@ const Comment = (props: IProp) => {
               comment={currChild}
               setComments={props.setComments}
             />
-            {/* {currChild.commentText} */}
           </h3>
         );
       })}
