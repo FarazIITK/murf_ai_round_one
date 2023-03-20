@@ -84,15 +84,20 @@ const Reply = (props: IProp) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={replyText}
-        onChange={(e) => handleInputChange(e)}
-      />
-      <button onClick={handleCommentSubmit}>Add</button>
-      <button onClick={handleCancelButton}>Cancel</button>
-    </div>
+    <>
+      <div className="reply-input">
+        <input
+          type="text"
+          value={replyText}
+          onChange={(e) => handleInputChange(e)}
+          className="reply-input-bar"
+        />
+      </div>
+      <div className="paired-buttons">
+        <button onClick={handleCommentSubmit}>Add</button>
+        <button onClick={handleCancelButton}>Cancel</button>
+      </div>
+    </>
   );
 };
 
