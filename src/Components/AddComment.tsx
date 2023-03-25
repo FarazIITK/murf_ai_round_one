@@ -11,6 +11,7 @@ interface IProp {
 }
 
 const AddComment = (props: IProp) => {
+  console.log('We can commit a console');
   const [commentText, setCommentText] =
     useState<string>('');
 
